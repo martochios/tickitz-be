@@ -40,7 +40,7 @@ app.use(
 );
 // Home
 app.get("/", (req, res) => {
-  res.send("API For Blanja App")
+  res.send("API Tickitz")
 })
 
 
