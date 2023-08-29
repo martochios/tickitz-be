@@ -34,7 +34,8 @@ const create = async (payload) => {
       payload,
       "fullname",
       "email",
-      "password"
+      "password",
+      "phone_number",
     )} returning *`
     return query
   } catch (error) {
@@ -50,8 +51,6 @@ const update = async (payload, id) => {
       "email",
       "password",
       "phone_number",
-      "gender",
-      "date_of_birth"
     )} WHERE id = ${id} returning *`
     return query
   } catch (error) {
