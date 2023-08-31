@@ -18,7 +18,7 @@ const pay = async (req, res) => {
       movie_id,
       payment_date,
       amount,
-      status: "unpaid ticket",
+      status: "Ticket in active",
     };
 
     const payQuery = await payModel.createPayment(payPayload);
