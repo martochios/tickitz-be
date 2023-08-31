@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const usersRoutes = require("./routes/users.routes")
 const authRoutes = require("./routes/auth.routes")
 const productsRoutes = require("./routes/products.routes")
+const payRoutes = require("./routes/pay.routes")
 
 
 const helmet = require("helmet")
@@ -32,6 +33,7 @@ app.use(
 app.use(usersRoutes)
 app.use(authRoutes)
 app.use(productsRoutes)
+app.use(payRoutes)
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
