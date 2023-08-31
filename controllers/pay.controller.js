@@ -5,7 +5,6 @@ const pay = async (req, res) => {
   try {
     const { movie_id, payment_date, amount } = req.body;
 
-    // Validasi input
     if (!(movie_id && payment_date && amount)) {
       return res.status(400).json({
         status: false,
@@ -13,12 +12,11 @@ const pay = async (req, res) => {
       });
     }
 
-    // Simpan data pembayaran ke database
     const payPayload = {
       movie_id,
       payment_date,
       amount,
-      status: "unpaid ticket",
+      status: "Ticket in active",
     };
 
     const payQuery = await payModel.createPayment(payPayload);
@@ -51,7 +49,7 @@ const updatePaymentStatusController = async (req, res) => {
   try {
     const { payment_id, new_status } = req.body;
 
-    // Validasi input
+    
     if (!(payment_id && new_status)) {
       return res.status(400).json({
         status: false,
@@ -75,7 +73,47 @@ const updatePaymentStatusController = async (req, res) => {
   }
 };
 
+const getPayment = async (req, res) => {
+  try {
+
+    const paymentId = req.params.paymentId;
+
+
+    if (!paymentId) {
+      return res.status(400).json({
+        status: false,
+        message: "Payment ID is required",
+      });
+    }
+
+
+    const query = await db`SELECT * FROM pay WHERE id = ${paymentId}`;
+
+    if (query.length === 0) {
+      return res.status(404).json({
+        status: false,
+        message: "Payment record not found",
+      });
+    }
+
+    const paymentData = query[0];
+
+    return res.status(200).json({
+      status: true,
+      message: "Payment record retrieved successfully",
+      data: paymentData,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      status: false,
+      message: "Error in server",
+    });
+  }
+};
+
 module.exports = {
   pay,
   updatePaymentStatusController,
+  getPayment,
 };
