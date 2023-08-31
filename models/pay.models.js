@@ -24,7 +24,17 @@ const updatePaymentStatus = async (paymentId, newStatus) => {
   }
 };
 
+const getPaymentById = async (paymentId) => {
+  try {
+    const query = await db`SELECT * FROM pay WHERE id = ${paymentId}`;
+    return query[0];
+  } catch (error) {
+    return error;
+  }
+};
+
 module.exports = {
   createPayment,
   updatePaymentStatus,
+  getPaymentById,
 };
