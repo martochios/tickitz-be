@@ -32,7 +32,7 @@ nodemon app
 
 ## Postman
 
-[![Run in Postman](https://www.postman.com/galactic-astronaut-447626/workspace/food-recipe/collection/27256896-82e2c3ec-afdf-4664-829c-9054c86ac285?action=share&creator=27256896)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://www.postman.com/galactic-astronaut-447626/workspace/food-recipe/collection/27256896-82e2c3ec-afdf-4664-829c-9054c86ac285?action=share&creator=27256896)
 
 
 # Related Project
